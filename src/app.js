@@ -48,7 +48,7 @@ export function createApp (component, reducer, initialState, render) {
 
     function doRender () {
         const state = getState();
-        render({ state, dispatch, ch });
+        render(execComponent(component, { state, dispatch, ch }));
     }
 
     on(doRender);

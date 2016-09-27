@@ -1729,7 +1729,7 @@ function createApp(component, reducer, initialState, render) {
 
     function doRender() {
         var state = getState();
-        render({ state: state, dispatch: dispatch, ch: ch });
+        render(execComponent(component, { state: state, dispatch: dispatch, ch: ch }));
     }
 
     on(doRender);

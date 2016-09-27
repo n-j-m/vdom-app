@@ -24,7 +24,7 @@ export function createRenderer (mountEl) {
     function renderer (vNode) {
         return !!node
             ? updateNode(vNode)
-            : craeteNode(vNode);
+            : createNode(vNode);
     }
 
     return renderer;

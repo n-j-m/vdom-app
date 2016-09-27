@@ -46,15 +46,13 @@ export function createApp (component, reducer, initialState, render) {
         return h(selector, prop, children);
     }
 
-    on(() => {
+    function doRender () {
         const state = getState();
-        render({
-            state,
-            dispatch,
-            ch
-        });
-    });
-    render({ state, dispatch, ch });
+        render({ state, dispatch, ch });
+    }
+
+    on(doRender);
+    doRender();
 
     return { store, ch };
 }

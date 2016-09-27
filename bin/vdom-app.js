@@ -1727,15 +1727,13 @@ function createApp(component, reducer, initialState, render) {
         return (0, _virtualDom.h)(selector, prop, children);
     }
 
-    on(function () {
+    function doRender() {
         var state = getState();
-        render({
-            state: state,
-            dispatch: dispatch,
-            ch: ch
-        });
-    });
-    render({ state: state, dispatch: dispatch, ch: ch });
+        render({ state: state, dispatch: dispatch, ch: ch });
+    }
+
+    on(doRender);
+    doRender();
 
     return { store: store, ch: ch };
 }

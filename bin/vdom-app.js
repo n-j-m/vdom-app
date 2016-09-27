@@ -1770,7 +1770,7 @@ function createRenderer(mountEl) {
     }
 
     function renderer(vNode) {
-        return !!node ? updateNode(vNode) : craeteNode(vNode);
+        return !!node ? updateNode(vNode) : createNode(vNode);
     }
 
     return renderer;

@@ -1,0 +1,25 @@
+{
+  "name": "vdom-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:compile && npm run min",
+    "min": "uglifyjs ./bin/vdom-app.js --compress --mangle --output ./bin/vdom-app.min.js --source-map ./bin/vdom-app.min.map",
+    "build:compile": "browserify ./src/index.js --outfile ./bin/vdom-app.js -t babelify --standalone VDomApp",
+    "clean": "trash ./bin/* !./bin/.gitkeep"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-latest": "^6.14.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "trash-cli": "^1.4.0",
+    "uglify-js": "^2.7.3"
+  },
+  "dependencies": {
+    "virtual-dom": "^2.1.1"
+  }
+}

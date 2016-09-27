@@ -1671,6 +1671,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.createApp = createApp;
+
+var _virtualDom = require('virtual-dom');
+
 function createStore(reducer, initialState) {
     var state = initialState;
     var listeners = [];
@@ -1721,7 +1724,7 @@ function createApp(component, reducer, initialState, render) {
                 ch: ch
             }, children);
         }
-        return h(selector, prop, children);
+        return (0, _virtualDom.h)(selector, prop, children);
     }
 
     on(function () {
@@ -1732,11 +1735,12 @@ function createApp(component, reducer, initialState, render) {
             ch: ch
         });
     });
+    render({ state: state, dispatch: dispatch, ch: ch });
 
     return { store: store, ch: ch };
 }
 
-},{}],37:[function(require,module,exports){
+},{"virtual-dom":11}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

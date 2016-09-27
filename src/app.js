@@ -1,3 +1,5 @@
+import { h } from 'virtual-dom';
+
 function createStore (reducer, initialState) {
     let state = initialState;
     const listeners = [];
@@ -52,6 +54,7 @@ export function createApp (component, reducer, initialState, render) {
             ch
         });
     });
+    render({ state, dispatch, ch });
 
     return { store, ch };
 }

@@ -1744,6 +1744,57 @@ function createApp(component, reducer, initialState, render) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.combineReducers = combineReducers;
+function combineReducers(reducers) {
+    var reducerKeys = Object.keys(reducers);
+
+    return function combination(state, action) {
+        var nextState = {};
+        var hasChanged = false;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = reducerKeys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var key = _step.value;
+
+                var reducer = reducers[key];
+                var prevStateFromKey = state[key];
+                var nextStateFromKey = reducer(prevStateFromKey, action);
+
+                if (typeof nextStateFromKey === 'undefined') {
+                    throw new Error('reducer ' + key + ' returned an undefined state');
+                }
+
+                nextState[key] = nextStateFromKey;
+                hasChanged = hasChanged || nextStateFromKey !== prevStateFromKey;
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        return hasChanged ? nextState : state;
+    };
+}
+
+},{}],38:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.createRenderer = createRenderer;
 
 var _virtualDom = require('virtual-dom');
@@ -1776,7 +1827,7 @@ function createRenderer(mountEl) {
     return renderer;
 }
 
-},{"virtual-dom":11}],38:[function(require,module,exports){
+},{"virtual-dom":11}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1801,5 +1852,14 @@ Object.defineProperty(exports, 'createApp', {
   }
 });
 
-},{"./app":36,"./renderer":37}]},{},[38])(38)
+var _combineReducers = require('./combineReducers');
+
+Object.defineProperty(exports, 'combineReducers', {
+  enumerable: true,
+  get: function get() {
+    return _combineReducers.combineReducers;
+  }
+});
+
+},{"./app":36,"./combineReducers":37,"./renderer":38}]},{},[39])(39)
 });

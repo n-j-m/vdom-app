@@ -2,7 +2,7 @@
   "name": "vdom-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:compile && npm run min",
     "min": "uglifyjs ./bin/vdom-app.js --compress --mangle --output ./bin/vdom-app.min.js --source-map ./bin/vdom-app.min.map",

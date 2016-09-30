@@ -1716,7 +1716,7 @@ function createApp(component, reducer, initialState, render) {
     var on = store.on;
 
 
-    function ch(selector, prop, children) {
+    function ch(selector, props, children) {
         if (typeof selector === 'function') {
             return execComponent(selector, {
                 state: props || {},
@@ -1724,7 +1724,7 @@ function createApp(component, reducer, initialState, render) {
                 ch: ch
             }, children);
         }
-        return (0, _virtualDom.h)(selector, prop, children);
+        return (0, _virtualDom.h)(selector, props, children);
     }
 
     function doRender() {

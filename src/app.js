@@ -35,7 +35,7 @@ export function createApp (component, reducer, initialState, render) {
     const store = createStore(reducer, initialState);
     const { getState, dispatch, on } = store;
 
-    function ch (selector, prop, children) {
+    function ch (selector, props, children) {
         if (typeof selector === 'function') {
             return execComponent(selector, {
                 state: props || {},
@@ -43,7 +43,7 @@ export function createApp (component, reducer, initialState, render) {
                 ch
             }, children);
         }
-        return h(selector, prop, children);
+        return h(selector, props, children);
     }
 
     function doRender () {

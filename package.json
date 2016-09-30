@@ -1,13 +1,14 @@
 {
   "name": "vdom-app",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:compile && npm run min",
     "min": "uglifyjs ./bin/vdom-app.js --compress --mangle --output ./bin/vdom-app.min.js --source-map ./bin/vdom-app.min.map",
     "build:compile": "browserify ./src/index.js --outfile ./bin/vdom-app.js -t babelify --standalone VDomApp",
-    "clean": "trash ./bin/* !./bin/.gitkeep"
+    "clean": "trash ./bin/* !./bin/.gitkeep",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",

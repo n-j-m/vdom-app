@@ -1,6 +1,6 @@
 {
   "name": "vdom-app",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -9,6 +9,10 @@
     "build:compile": "browserify ./src/index.js --outfile ./bin/vdom-app.js -t babelify --standalone VDomApp",
     "clean": "trash ./bin/* !./bin/.gitkeep",
     "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/n-j-m/vdom-app"
   },
   "keywords": [],
   "author": "",

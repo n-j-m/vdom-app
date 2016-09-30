@@ -1719,7 +1719,7 @@ function createApp(component, reducer, initialState, render) {
     function ch(selector, prop, children) {
         if (typeof selector === 'function') {
             return execComponent(selector, {
-                state: props,
+                state: props || {},
                 dispatch: dispatch,
                 ch: ch
             }, children);
